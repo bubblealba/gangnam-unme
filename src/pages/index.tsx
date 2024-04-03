@@ -14,7 +14,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <main className="font-[NanumSquare,sans-serif] font-normal min-h-screen bg-black text-white break-keep">
         <header className="relative h-[70vh] min-h-[30rem] w-full">
           <div className="absolute h-full w-full">
-            {/* <StaticImage src='../static/images/room_00.jpg' alt={siteData.imageAlt} objectFit="cover" objectPosition="center" className="h-full w-full"/> */}
+            <StaticImage src='../static/images/room_00.jpg' alt={siteData.imageAlt} objectFit="cover" objectPosition="center" className="h-full w-full"/>
           </div>
           <div className="absolute flex items-center bg-black py-4 px-8 w-full">
             <StaticImage src='../static/images/icon.png' alt={siteData.imageAlt+' 아이콘'} className="h-8 w-8 mr-2 rounded-full flex-shrink-0"/>
@@ -121,7 +121,7 @@ const IndexPage: React.FC<PageProps> = () => {
           <section id='business-interior' className="mt-12">
             <h2 className="text-xl">{siteData.businessInterior.title}</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 mt-2 content-stretch gap-1">
-              {/* <StaticImage src='../static/images/room_01.jpg' alt={`${siteData.imageAlt} 01`} objectFit="cover" objectPosition="center top" className="h-full w-full rounded"/>
+              <StaticImage src='../static/images/room_01.jpg' alt={`${siteData.imageAlt} 01`} objectFit="cover" objectPosition="center top" className="h-full w-full rounded"/>
               <StaticImage src='../static/images/room_02.jpg' alt={`${siteData.imageAlt} 02`} objectFit="cover" objectPosition="center top" className="h-full w-full rounded"/>
               <StaticImage src='../static/images/room_03.jpg' alt={`${siteData.imageAlt} 03`} objectFit="cover" objectPosition="center top" className="h-full w-full rounded"/>
               <StaticImage src='../static/images/room_04.jpg' alt={`${siteData.imageAlt} 04`} objectFit="cover" objectPosition="center top" className="h-full w-full rounded"/>
@@ -129,7 +129,7 @@ const IndexPage: React.FC<PageProps> = () => {
               <StaticImage src='../static/images/room_06.jpg' alt={`${siteData.imageAlt} 06`} objectFit="cover" objectPosition="center top" className="h-full w-full rounded"/>
               <StaticImage src='../static/images/room_07.jpg' alt={`${siteData.imageAlt} 07`} objectFit="cover" objectPosition="center top" className="h-full w-full rounded"/>
               <StaticImage src='../static/images/room_08.jpg' alt={`${siteData.imageAlt} 08`} objectFit="cover" objectPosition="center top" className="h-full w-full rounded"/>
-              <StaticImage src='../static/images/room_09.jpg' alt={`${siteData.imageAlt} 09`} objectFit="cover" objectPosition="center top" className="h-full w-full rounded"/> */}
+              <StaticImage src='../static/images/room_09.jpg' alt={`${siteData.imageAlt} 09`} objectFit="cover" objectPosition="center top" className="h-full w-full rounded"/>
             </div>
           </section>
           <section id='business-address' className="mt-8">
