@@ -57,7 +57,7 @@ const About : React.FC<PageProps> = () => {
             <div className="max-w-[400px] shrink-0 mx-auto">
               <StaticImage src='../static/images/about_01.jpg' alt={`${siteData.imageAlt} 01`} objectFit="cover" objectPosition="center" className="h-full w-full rounded"/>
             </div>
-            <p>
+            <p className="mt-4">
               셔츠룸은 서울 강남 지역에 위치한 특별한 종류의 유흥 업소로, 고급 분위기와 독특한 컨셉을 자랑합니다. 고객들은 이곳에서 룸살롱 유흥을 재미있게 즐길 수 있습니다.
             </p>
             <p className="mt-2">
