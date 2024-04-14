@@ -1,9 +1,11 @@
 import * as React from "react"
-import type { HeadFC, PageProps } from "gatsby"
+import { Link, type HeadFC, type PageProps } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image";
 import ItemBox from "../components/ItemBox";
 import ContentBox from "../components/ContentBox";
-import siteData from "../static/siteData.json"
+import siteData from "../static/siteData.json";
+import StructuredSiteData from "../components/StructuredSiteData";
+import AppWrapper from "../components/AppWrapper";
 
 const IndexPage: React.FC<PageProps> = () => {
 
@@ -11,26 +13,24 @@ const IndexPage: React.FC<PageProps> = () => {
 
   return (
     <>
-      <main className="font-[NanumSquare,sans-serif] font-normal min-h-screen bg-black text-white break-keep">
-        <header className="relative h-[70vh] min-h-[30rem] w-full">
+      <AppWrapper structuredData={JSON.stringify(StructuredSiteData)}>
+        <section className="relative h-[70vh] min-h-[30rem] w-full">
           <div className="absolute h-full w-full">
             <StaticImage src='../static/images/room_00.jpg' alt={siteData.imageAlt} objectFit="cover" objectPosition="center" className="h-full w-full"/>
           </div>
-          <div className="absolute flex items-center bg-black py-4 px-8 w-full">
-            <StaticImage src='../static/images/icon.png' alt={siteData.imageAlt+' 아이콘'} className="h-8 w-8 mr-2 rounded-full flex-shrink-0"/>
-            <h1 id='logo' className="w-full text-red font-extrabold text-3xl">{siteData.shopName}</h1>
-          </div>
-          <div className="relative max-w-[1500px] h-full w-full top-0 pt-4 px-8 mx-auto flex flex-col">
+          <div className="relative max-w-[1500px] h-full w-full px-8 mx-auto flex flex-col">
             <div id='info' className="relative text-5xl mobile:text-3xl h-full w-auto">
               <div className="flex flex-col justify-center h-full w-auto">
                 <div>
                   <div className="bg-black/70 p-4 rounded-md w-auto inline-block">
-                    <p>
-                      {siteData.shopName}
-                    </p>
-                    <p className="font-bold mt-2">
-                      {siteData.shopSubName}
-                    </p>
+                    <h1>
+                      <span>
+                        {siteData.shopName}
+                      </span>&nbsp;
+                      <span className="block font-bold mt-2">
+                        {siteData.shopSubName}
+                      </span>
+                    </h1>
                     <div className="text-base mt-2">
                       {siteData.shopDescription.map((item,idx)=>(
                         <p key={'shopDescription'+idx}>{item}</p>
@@ -50,9 +50,9 @@ const IndexPage: React.FC<PageProps> = () => {
             </div>
             <div className="h-8 flex-shrink-0"/>
           </div>
-        </header>
+        </section>
         <div className="relative h-14 flex-shrink-0 bg-gradient-to-t from-black to-black/0 mt-[-3.5rem]"/>
-        <div className="max-w-[1500px] mx-auto w-full px-8">
+        <div className="max-w-[1500px] mx-auto w-full px-8 mt-4">
           <section id='business-event'>
             <h2 className="text-xl">{siteData.businessEvent.title}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 mt-2 content-stretch gap-1 ">
@@ -110,7 +110,14 @@ const IndexPage: React.FC<PageProps> = () => {
                   <div className="text-sm font-light pl-3">
                     {
                       item.items.map((content)=>(
-                        <p key={content} className="mt-2">{content}</p>
+                        <p key={content} className="mt-2">{content.split(siteData.hyperlink).map((c,i)=>(
+                          <>
+                            <span>{c}</span>
+                            {i+1!==content.split(siteData.hyperlink).length&&
+                              <Link to={`/${encodeURIComponent(siteData.about.name)}`} className="underline font-bold hover:text-canary-yellow">{siteData.hyperlink}</Link>
+                            }
+                          </>
+                        ))}</p>
                       ))
                     }
                   </div>
@@ -140,27 +147,8 @@ const IndexPage: React.FC<PageProps> = () => {
                 width="100%" height="450" style={{border:0}} allowFullScreen={false} loading="lazy" referrerPolicy="no-referrer-when-downgrade"/>
             </div>
           </section>
-          <footer className="mt-12">
-            <div className="text-sm font-light pb-20">
-              <p>상호: {siteData.shopName} | {siteData.shopSubName}</p>
-              <p>주소: {siteData.businessAddress.address}</p>
-              <p>예약문의: {siteData.phoneNumber}</p>
-              <p className="mt-2">Copyright © 2024 {siteData.shopName} | {siteData.shopSubName} | All rights reserved</p>
-            </div>
-          </footer>
         </div>
-        <footer className="fixed bottom-0 z-[100] w-full">
-          <div className="max-w-[1500px] mx-auto w-full px-8 py-4 bg-black flex justify-center">
-            <div className="text-center w-auto mr-4 text-sm flex-shrink-0">
-              <p>{siteData.shopName}</p>
-              <p className='text-canary-yellow font-bold'>24시 상주영업진</p>
-            </div>
-            <a className="bg-red text-white font-bold text-sm max-w-96 py-2 px-5 rounded-full justify-center flex items-center w-full" href={`tel:${siteData.phoneNumber}`}>
-              연락하기
-            </a>
-          </div>
-        </footer>
-      </main>
+      </AppWrapper>
     </>
   )
 }
