@@ -35,7 +35,7 @@ const AppWrapper = ({children, structuredData, maxWidth}:{children:React.ReactNo
               <p className='text-canary-yellow font-bold'>24시 상주영업진</p>
             </div>
             <a className="bg-red text-white font-bold text-sm max-w-96 py-2 px-5 rounded-full justify-center flex items-center w-full" href={`tel:${siteData.phoneNumber}`}>
-              연락하기
+              {siteData.phoneNumber}
             </a>
           </div>
         </div>
